@@ -20,7 +20,7 @@ urlpatterns = [
     path("users/", include("notely.users.urls", namespace="users")),
     path("accounts/", include("allauth.urls")),
     # Your stuff: custom urls includes go here
-    # ...
+    path("notes/", include("notely.notes.urls", namespace="notes")),
     # Media files
     *static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT),
 ]

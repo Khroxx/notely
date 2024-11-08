@@ -77,11 +77,15 @@ THIRD_PARTY_APPS = [
     "allauth.account",
     "allauth.mfa",
     "allauth.socialaccount",
+    # added:
+    "corsheaders",
+    "rest_framework",
 ]
 
 LOCAL_APPS = [
     "notely.users",
     # Your stuff: custom apps go here
+    "notely.notes",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -139,6 +143,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "allauth.account.middleware.AccountMiddleware",
+    # added:
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 # STATIC
