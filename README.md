@@ -7,11 +7,43 @@ d
 
 License: MIT
 
-## Settings
+## What you need to run locally
 
-Moved to [settings](https://cookiecutter-django.readthedocs.io/en/latest/1-getting-started/settings.html).
+- Docker, Docker-compose
+- PostreSQL (+ have a user)
+- createdb
+
 
 ## Basic Commands
+
+To install: <br>
+1. Clone repository:
+```bash
+git clone https://github.com/Khroxx/notely.git
+```
+
+2. Create a database for it:
+```bash
+createdb --username=postgres notely
+```
+
+3. Change DATABASE_URL to your postgres username
+in .envs/.local/.django write:
+```bash
+DATABASE_URL=postgres://postgresuser:postgrespassword@postgres:5432/notely
+```
+
+4. Start the docker localhost
+```bash
+docker compose -f docker-compose.local.yml build
+docker compose -f docker-compose.local.yml run
+```
+
+5. Migrate
+```bash
+docker compose -f docker-compose.local.yml run --rm python manage.py makemigrations
+docker compose -f docker-compose.local.yml run --rm python manage.py migrate
+```
 
 ### Setting Up Your Users
 
@@ -41,22 +73,9 @@ To run the tests, check your test coverage, and generate an HTML coverage report
 
     $ pytest
 
-### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally.html#using-webpack-or-gulp).
-
 ### Email Server
 
-In development, it is often nice to be able to see emails that are being sent from your application. For that reason local SMTP server [Mailpit](https://github.com/axllent/mailpit) with a web interface is available as docker container.
-
-Container mailpit will start automatically when you will run all docker containers.
-Please check [cookiecutter-django Docker documentation](https://cookiecutter-django.readthedocs.io/en/latest/2-local-development/developing-locally-docker.html) for more details how to start all containers.
-
 With Mailpit running, to view messages that are sent by your application, open your browser and go to `http://127.0.0.1:8025`
-
-## Deployment
-
-The following details how to deploy this application.
 
 ### Docker
 

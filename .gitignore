@@ -278,3 +278,7 @@ notely/media/
 .env
 .envs/*
 !.envs/.local/
+
+**/migrations/**
+!**/migrations
+!**/migrations/__init__.py
