@@ -57,6 +57,10 @@ ROOT_URLCONF = "config.urls"
 # https://docs.djangoproject.com/en/dev/ref/settings/#wsgi-application
 WSGI_APPLICATION = "config.wsgi.application"
 
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+]
+
 # APPS
 # ------------------------------------------------------------------------------
 DJANGO_APPS = [
